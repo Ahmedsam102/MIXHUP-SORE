@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIXHUP STORE - المتجر المتكامل</title>
+<title>MIXHUP STORE - المتجر النهائي</title>
 <style>
-:root{--bg:#0e0e0e;--panel:#151515;--card:#1a1a1a;--muted:#aaa;--accent:#ff4c4c;}
+:root{
+  --bg:#0e0e0e; --panel:#151515; --card:#1a1a1a; --muted:#aaa; --accent:#ff4c4c;
+}
 *{box-sizing:border-box}
 body{margin:0;font-family:Tahoma,Arial;background:var(--bg);color:#ddd;line-height:1.4}
 header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#000;border-bottom:1px solid #222}
@@ -23,18 +25,13 @@ label{display:block;margin-bottom:6px;color:var(--muted);font-size:13px}
 input[type=text], input[type=number], select, textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #333;background:#0f0f0f;color:#ddd}
 textarea{min-height:70px;resize:vertical}
 .small{font-size:13px;color:var(--muted)}
-.toggle{display:inline-flex;align-items:center;gap:8px}
-.status-dot{width:10px;height:10px;border-radius:50%;background:#555;display:inline-block}
-.status-on{background:#4caf50}
-.status-off{background:#e91e63}
 .main-area{flex:1}
 .controls{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
 .search{flex:1;display:flex}
 .search input{flex:1;padding:8px;border-radius:8px;border:1px solid #333;background:#0f0f0f;color:#ddd}
 .cards{display:flex;flex-wrap:wrap;gap:16px}
 .product-card{width:300px;background:var(--card);border:1px solid #222;padding:12px;border-radius:12px}
-.product-card .slider{border-radius:8px;overflow:hidden; background:#000}
-.product-card img{width:100%;display:block}
+.product-card img{width:100%;display:block;border-radius:8px}
 .prod-title{display:flex;justify-content:space-between;align-items:center;margin:8px 0}
 .price{color:#fff;font-weight:700}
 .old-price{color:var(--muted);text-decoration:line-through;font-size:13px;margin-left:8px}
@@ -60,7 +57,7 @@ textarea{min-height:70px;resize:vertical}
 <body>
 
 <header>
-  <h1>MIXHUP STORE — المتجر المتكامل</h1>
+  <h1>MIXHUP STORE — المتجر النهائي</h1>
   <div class="top-actions">
     <div id="adminStatus" class="small">حالة الأدمن: <span id="adminName" class="mini">غير مسجل</span></div>
     <button id="loginBtn" class="btn">تسجيل دخول أدمن</button>
@@ -80,18 +77,46 @@ textarea{min-height:70px;resize:vertical}
         <button class="btn" onclick="clearAllProducts()">🗑️ حذف كل المنتجات</button>
         <button class="btn" onclick="viewOrders()">📋 عرض الطلبات</button>
       </div>
+
       <hr style="border-color:#222">
       <div style="margin-top:8px;">
         <h3 class="small">إضافة / تعديل منتج</h3>
-        <div class="form-row"><label>الاسم</label><input id="p_name" placeholder="اسم المنتج"></div>
-        <div class="form-row"><label>السعر (ج)</label><input id="p_price" type="number" placeholder="مثال: 150"></div>
-        <div class="form-row"><label>سعر قديم اختياري</label><input id="p_oldprice" type="number" placeholder="مثال: 200"></div>
-        <div class="form-row"><label>نسبة خصم</label><input id="p_discount" type="number" value="0"></div>
-        <div class="form-row"><label>الوصف</label><textarea id="p_desc" placeholder="وصف مختصر"></textarea></div>
-        <div class="form-row"><label>الفئة/القسم</label><input id="p_category" placeholder="مثل: ملابس، اكسسوارات"></div>
-        <div class="form-row"><label>صور (رابط كل صورة مفصول بفاصلة)</label><input id="p_images" placeholder="https://... , https://..."></div>
-        <div class="form-row"><label>ألوان مفصولة بفاصلة</label><input id="p_colors" placeholder="أسود,أحمر,أزرق"></div>
-        <div class="form-row"><label>الكمية المتاحة</label><input id="p_stock" type="number" value="10"></div>
+        <div class="form-row">
+          <label>الاسم</label>
+          <input id="p_name" placeholder="اسم المنتج">
+        </div>
+        <div class="form-row">
+          <label>السعر (ج)</label>
+          <input id="p_price" type="number" placeholder="مثال: 150">
+        </div>
+        <div class="form-row">
+          <label>سعر قديم اختياري</label>
+          <input id="p_oldprice" type="number" placeholder="مثال: 200">
+        </div>
+        <div class="form-row">
+          <label>نسبة خصم</label>
+          <input id="p_discount" type="number" value="0">
+        </div>
+        <div class="form-row">
+          <label>الوصف</label>
+          <textarea id="p_desc" placeholder="وصف مختصر"></textarea>
+        </div>
+        <div class="form-row">
+          <label>الفئة/القسم</label>
+          <input id="p_category" placeholder="مثل: ملابس، اكسسوارات">
+        </div>
+        <div class="form-row">
+          <label>صور (رابط كل صورة مفصول بفاصلة)</label>
+          <input id="p_images" placeholder="https://... , https://...">
+        </div>
+        <div class="form-row">
+          <label>ألوان مفصولة بفاصلة</label>
+          <input id="p_colors" placeholder="أسود,أحمر,أزرق">
+        </div>
+        <div class="form-row">
+          <label>الكمية المتاحة</label>
+          <input id="p_stock" type="number" value="10">
+        </div>
         <div style="display:flex;gap:8px">
           <button class="btn" onclick="saveProduct()">✔️ حفظ المنتج</button>
           <button class="btn" onclick="closeAddForm()">إلغاء</button>
@@ -102,40 +127,58 @@ textarea{min-height:70px;resize:vertical}
 
     <main class="main-area">
       <div class="controls">
-        <div class="search"><input id="searchInput" placeholder="ابحث عن منتج أو قسم..." oninput="renderProducts()"/></div>
-        <select id="filterCategory" onchange="renderProducts()"><option value="">كل الأقسام</option></select>
-        <div style="display:flex;gap:8px"><button class="btn" onclick="openCart()">🛒 افتح العربة</button></div>
+        <div class="search">
+          <input id="searchInput" placeholder="ابحث عن منتج أو قسم..." oninput="renderProducts()" />
+        </div>
+        <select id="filterCategory" onchange="renderProducts()">
+          <option value="">كل الأقسام</option>
+        </select>
+        <div style="display:flex;gap:8px">
+          <button class="btn" onclick="openCart()">🛒 افتح العربة</button>
+        </div>
       </div>
       <div id="productsArea" class="cards"></div>
-      <div class="footer"><p>جميع الحقوق محفوظة © MIXHUP STORE 2025</p></div>
+      <div class="footer">
+        <p>جميع الحقوق محفوظة © MIXHUP STORE 2025</p>
+      </div>
     </main>
   </div>
 </div>
 
-<div id="cartIcon" style="position:fixed;bottom:20px;left:20px;background:#222;padding:12px;border-radius:50%;cursor:pointer;z-index:9999;box-shadow:0 0 10px #000;font-size:22px;">🛒</div>
+<div id="cartIcon" style="position:fixed;bottom:20px;left:20px;background:#222;padding:12px;border-radius:50%;cursor:pointer;z-index:9999;box-shadow:0 0 10px #000;font-size:22px;">
+  🛒
+</div>
 
 <div id="cartBox" style="position:fixed;bottom:80px;left:20px;background:#111;padding:15px;border-radius:10px;width:260px;max-height:350px;overflow-y:auto;display:none;z-index:9999;box-shadow:0 0 15px #000;">
   <h3 style="margin-top:0">العربة</h3>
   <div class="cart-items" id="cartItems"></div>
-  <div style="display:flex;justify-content:space-between;margin-top:10px"><span style="font-size:14px;color:#aaa">الإجمالي:</span><span id="cartTotal" style="font-weight:700;font-size:18px">0 ج</span></div>
-  <div style="display:flex;gap:8px;margin-top:12px"><button class="btn" style="flex:1" onclick="checkout()">اطلب الآن</button><button class="btn" style="flex:1" onclick="clearCart()">تفريغ</button></div>
+  <div style="display:flex;justify-content:space-between;margin-top:10px">
+    <span style="font-size:14px;color:#aaa">الإجمالي:</span>
+    <span id="cartTotal" style="font-weight:700;font-size:18px">0 ج</span>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:12px">
+    <button class="btn" style="flex:1" onclick="checkout()">اطلب الآن</button>
+    <button class="btn" style="flex:1" onclick="clearCart()">تفريغ</button>
+  </div>
 </div>
 
 <div id="modal" class="modal-back" onclick="closeModal(event)">
   <div class="modal" role="dialog" onclick="event.stopPropagation()">
     <h3 id="modalTitle">تفاصيل</h3>
     <div id="modalBody"></div>
-    <div style="text-align:left;margin-top:12px"><button class="btn" onclick="closeModal()">إغلاق</button></div>
+    <div style="text-align:left;margin-top:12px">
+      <button class="btn" onclick="closeModal()">إغلاق</button>
+    </div>
   </div>
 </div>
 
-<!-- Recaptcha -->
 <div id="recaptcha-container"></div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDJ8lh1VMcTBNtppdvIMtDYeWw2Wua1mug",
@@ -149,14 +192,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',{size:'invisible'});
 
-// Recaptcha مخفي
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {size:'invisible'});
-</script>
-
-<script>
 // ======= بيانات ومتجر =======
-let isAdmin=false, settings={maintenanceMode:false, acceptOrders:true, hidePrices:false, adminPass:"admin123"}, products=[], cart=[], orders=[];
+let isAdmin=false;
+let settings={maintenanceMode:false,acceptOrders:true,hidePrices:false,adminPass:"admin123"};
+let products=[];
+let cart=[];
+let orders=[];
 
 // ======= واجهة الأدمن =======
 function renderAdminUI(){
@@ -171,115 +214,159 @@ function renderAdminUI(){
 // ======= تحميل البيانات من Firebase =======
 function loadData(){
   db.ref("/settings").on("value",snap=>{ if(snap.exists()) settings={...settings,...snap.val()}; });
-  db.ref("/products").on("value",snap=>{ products = snap.exists()?Object.values(snap.val()):[]; updateCategoryFilter(); renderProducts(); });
-  db.ref("/orders").on("value",snap=>{ orders = snap.exists()?Object.values(snap.val()):[]; });
+  db.ref("/products").on("value",snap=>{
+    products = snap.exists()? Object.values(snap.val()):[];
+    updateCategoryFilter();
+    renderProducts();
+  });
+  db.ref("/orders").on("value",snap=>{ orders = snap.exists()? Object.values(snap.val()):[]; });
 }
 
-// ======= حفظ الإعدادات =======
-function saveSettings(){ db.ref("/settings").set(settings); }
-
 // ======= تسجيل الأدمن =======
-document.getElementById("loginBtn").addEventListener("click",()=>{ const pass=prompt("ادخل كلمة مرور الأدمن")||""; if(pass===settings.adminPass){ isAdmin=true; renderAdminUI(); alert("تم تسجيل الدخول!"); } else alert("كلمة المرور غير صحيحة"); });
-document.getElementById("logoutBtn").addEventListener("click",()=>{ isAdmin=false; renderAdminUI(); alert("تم تسجيل الخروج"); });
+document.getElementById("loginBtn").addEventListener("click",()=>{
+  const pass=prompt("ادخل كلمة مرور الأدمن")||"";
+  if(pass===settings.adminPass){ isAdmin=true; renderAdminUI(); alert("تم تسجيل الدخول!"); }
+  else alert("كلمة المرور غير صحيحة");
+});
+document.getElementById("logoutBtn").addEventListener("click",()=>{
+  isAdmin=false; renderAdminUI(); alert("تم تسجيل الخروج");
+});
 
 // ======= إدارة المنتجات =======
-function openAddForm(){ document.getElementById("editingIndex").value="-1"; document.getElementById("p_name").value=""; document.getElementById("p_price").value=""; document.getElementById("p_oldprice").value=""; document.getElementById("p_desc").value=""; document.getElementById("p_category").value=""; document.getElementById("p_images").value=""; document.getElementById("p_colors").value=""; document.getElementById("p_stock").value=10; window.scrollTo({top:0,behavior:"smooth"}); }
+function openAddForm(){
+  document.getElementById("editingIndex").value="-1"; 
+  document.getElementById("p_name").value=""; document.getElementById("p_price").value="";
+  document.getElementById("p_oldprice").value=""; document.getElementById("p_desc").value="";
+  document.getElementById("p_category").value=""; document.getElementById("p_images").value="";
+  document.getElementById("p_colors").value=""; document.getElementById("p_stock").value=10; 
+  window.scrollTo({top:0,behavior:"smooth"});
+}
 function closeAddForm(){ openAddForm(); }
+
 function saveProduct(){
-  const name=document.getElementById("p_name").value.trim(); if(!name){ alert("اكتب اسم المنتج"); return; }
+  const name=document.getElementById("p_name").value.trim();
+  if(!name){ alert("اكتب اسم المنتج"); return; }
+
+  const prod = {
+    name,
+    price:Number(document.getElementById("p_price").value)||0,
+    oldPrice:Number(document.getElementById("p_oldprice").value)||0,
+    discount:Number(document.getElementById("p_discount").value)||0,
+    desc:document.getElementById("p_desc").value,
+    category:document.getElementById("p_category").value||"عام",
+    images:document.getElementById("p_images").value.split(",").map(s=>s.trim()).filter(s=>s),
+    colors:document.getElementById("p_colors").value.split(",").map(s=>s.trim()).filter(s=>s),
+    stock:Number(document.getElementById("p_stock").value)||0,
+    visible:true
+  };
+
   const idx = Number(document.getElementById("editingIndex").value);
-  const prod = { name, price:Number(document.getElementById("p_price").value)||0, oldPrice:Number(document.getElementById("p_oldprice").value)||0, discount:Number(document.getElementById("p_discount").value)||0, desc:document.getElementById("p_desc").value, category:document.getElementById("p_category").value||"عام", images:document.getElementById("p_images").value.split(",").map(s=>s.trim()).filter(s=>s), colors:document.getElementById("p_colors").value.split(",").map(s=>s.trim()).filter(s=>s), stock:Number(document.getElementById("p_stock").value)||0, visible:true };
-  if(idx>=0){ products[idx] = {...products[idx], ...prod}; } else{ products.unshift(prod); }
-  db.ref("/products").set(products); alert("تم حفظ المنتج"); openAddForm();
+  if(idx>=0){
+    db.ref("/products/"+idx).set(prod);
+  } else {
+    db.ref("/products").push(prod);
+  }
+
+  alert("تم حفظ المنتج");
+  openAddForm();
 }
 
 // ======= عرض المنتجات =======
 function calcFinalPrice(p){ let price=Number(p.price)||0; if(p.discount>0) price=Math.round(price*(1-p.discount/100)); return price; }
+
 function renderProducts(){
   const area=document.getElementById("productsArea"); area.innerHTML="";
   const q=document.getElementById("searchInput").value.trim().toLowerCase();
   const cat=document.getElementById("filterCategory").value;
   products.forEach((p,idx)=>{
-    if(!p.visible) return; if(q && !(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q)) return; if(cat && p.category!==cat) return;
-    const final=calcFinalPrice(p); const oldPriceHtml=(p.oldPrice && !settings.hidePrices)? `<span class="old-price">${p.oldPrice} ج</span>` : ""; const discountHtml=(p.discount>0)? `<div class="mini">خصم ${p.discount}%</div>` : ""; const images=(p.images && p.images.length)?p.images:["https://via.placeholder.com/600x400?text=No+Image"]; const firstImage=images[0];
+    if(!p.visible) return;
+    if(q && !(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q)) return;
+    if(cat && p.category!==cat) return;
+    const final=calcFinalPrice(p);
+    const oldPriceHtml=(p.oldPrice && !settings.hidePrices)? `<span class="old-price">${p.oldPrice} ج</span>` : "";
+    const discountHtml=(p.discount>0)? `<div class="mini">خصم ${p.discount}%</div>` : "";
+    const images=(p.images && p.images.length)?p.images:["https://via.placeholder.com/600x400?text=No+Image"];
+    const firstImage=images[0];
     const card=document.createElement("div"); card.className="product-card";
-    card.innerHTML=`<div class="slider"><img src="${firstImage}" alt="${p.name}"></div>
-    <div style="margin-top:8px">
-      <div class="prod-title">
-        <div>
-          <div style="font-size:15px">${p.name}</div>
-          <div class="mini">${p.category} • ${p.desc}</div>
+    card.innerHTML=`
+      <div class="slider"><img src="${firstImage}" alt="${p.name}"></div>
+      <div style="margin-top:8px">
+        <div class="prod-title">
+          <div>
+            <div style="font-size:15px">${p.name}</div>
+            <div class="mini">${p.category} • ${p.desc}</div>
+          </div>
+          <div style="text-align:left">
+            <div class="price">${settings.hidePrices?"—":final+" ج"}</div>${oldPriceHtml}${discountHtml}
+          </div>
         </div>
-        <div style="text-align:left">
-          <div class="price">${settings.hidePrices?"—":final+" ج"}</div>${oldPriceHtml}${discountHtml}
+        <div class="prod-opts">
+          <select class="color-select" id="color-${idx}">${p.colors.map(c=>`<option>${c}</option>`).join("")}</select>
+          <input type="number" id="qty-${idx}" value="1" min="1" max="${p.stock}">
+        </div>
+        <div class="card-actions">
+          <button class="btn" onclick="addToCart(${idx})">أضف للعربة</button>
         </div>
       </div>
-      <div class="prod-opts">
-        <select class="color-select" id="color-${idx}">${p.colors.map(c=>`<option>${c}</option>`).join("")}</select>
-        <input type="number" id="qty-${idx}" value="1" min="1" max="${p.stock}">
-      </div>
-      <div class="card-actions">
-        <button class="btn" onclick="addToCart(${idx})">أضف للعربة</button>
-        ${isAdmin?`<button class="btn" onclick="editProduct(${idx})">تعديل</button>`:""}
-      </div>
-    </div>`;
+    `;
     area.appendChild(card);
   });
 }
 
-// ======= عربة التسوق =======
-function addToCart(idx){ const p=products[idx]; const qty=Number(document.getElementById("qty-"+idx).value)||1; const color=document.getElementById("color-"+idx).value||""; if(qty>p.stock){ alert("الكمية غير متوفرة"); return; } cart.push({...p, qty, color}); saveCart(); renderCart(); alert("تم الإضافة للعربة"); }
-function saveCart(){ localStorage.setItem("cart",JSON.stringify(cart)); }
-function loadCart(){ const c=JSON.parse(localStorage.getItem("cart")||"[]"); cart=c; renderCart(); }
-function renderCart(){ const area=document.getElementById("cartItems"); area.innerHTML=""; let total=0; cart.forEach((p,i)=>{ const final=calcFinalPrice(p)*p.qty; total+=final; const row=document.createElement("div"); row.className="cart-row"; row.innerHTML=`<span>${p.name} x${p.qty}</span><span>${final} ج</span>`; area.appendChild(row); }); document.getElementById("cartTotal").textContent=total+" ج"; }
-function openCart(){ document.getElementById("cartBox").style.display="block"; }
-function clearCart(){ if(confirm("مسح كل محتوى العربة؟")){ cart=[]; saveCart(); renderCart(); } }
-document.getElementById("cartIcon").addEventListener("click",()=>{ document.getElementById("cartBox").style.display=document.getElementById("cartBox").style.display==="block"?"none":"block"; });
-
-// ======= إجراءات الأدمن =======
-function editProduct(idx){ const p=products[idx]; document.getElementById("editingIndex").value=idx; document.getElementById("p_name").value=p.name; document.getElementById("p_price").value=p.price; document.getElementById("p_oldprice").value=p.oldPrice; document.getElementById("p_desc").value=p.desc; document.getElementById("p_category").value=p.category; document.getElementById("p_images").value=p.images.join(","); document.getElementById("p_colors").value=p.colors.join(","); document.getElementById("p_stock").value=p.stock; window.scrollTo({top:0,behavior:"smooth"}); }
-function clearAllProducts(){ if(confirm("هل تريد حذف كل المنتجات؟")){ products=[]; db.ref("/products").set(products); } }
-function toggleMaintenance(){ settings.maintenanceMode=!settings.maintenanceMode; saveSettings(); alert("تم تغيير وضع الصيانة: "+(settings.maintenanceMode?"مفعل":"غير مفعل")); }
-function toggleOrderAccept(){ settings.acceptOrders=!settings.acceptOrders; saveSettings(); alert("حالة قبول الطلبات: "+(settings.acceptOrders?"مفعل":"متوقف")); }
-function togglePrices(){ settings.hidePrices=!settings.hidePrices; saveSettings(); renderProducts(); alert("تم "+(settings.hidePrices?"إخفاء":"إظهار")+" الأسعار"); }
-function viewOrders(){ let html=orders.map(o=>`<div>رقم: ${o.phone} • منتجات: ${o.cart.length} • ${new Date(o.timestamp).toLocaleString()}</div>`).join(""); showModal("الطلبات",html||"لا يوجد طلبات"); }
-
-// ======= Modal =======
-function showModal(title,content){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalBody").innerHTML=content; document.getElementById("modal").style.display="flex"; }
-function closeModal(e){ if(!e || e.target===document.getElementById("modal")) document.getElementById("modal").style.display="none"; }
-
-// ======= فلاتر الأقسام =======
-function updateCategoryFilter(){ const sel=document.getElementById("filterCategory"); const cats=[...new Set(products.map(p=>p.category))]; sel.innerHTML='<option value="">كل الأقسام</option>'+cats.map(c=>`<option value="${c}">${c}</option>`).join(""); }
-
-// ======= التحقق من رقم الهاتف باستخدام Firebase =======
-async function requestPhoneVerification(phone){
-  try{
-    const confirmationResult = await auth.signInWithPhoneNumber(phone, window.recaptchaVerifier);
-    const code = prompt(`أرسل كود التحقق إلى ${phone}\nادخل الكود هنا:`);
-    if(!code) return null;
-    const result = await confirmationResult.confirm(code);
-    alert(`تم تسجيل الدخول بنجاح! مرحبًا ${result.user.phoneNumber}`);
-    return result.user.phoneNumber;
-  } catch(err){ console.error(err); alert("حدث خطأ أثناء التحقق من الرقم: "+err.message); return null; }
+function updateCategoryFilter(){
+  const sel=document.getElementById("filterCategory");
+  const cats=[...new Set(products.map(p=>p.category))];
+  sel.innerHTML='<option value="">كل الأقسام</option>'+cats.map(c=>`<option value="${c}">${c}</option>`).join("");
 }
 
-// ======= checkout =======
-async function checkout(){
-  if(cart.length===0){ alert("العربة فارغة!"); return; }
-  if(!settings.acceptOrders){ alert("الطلبات مغلقة حاليا"); return; }
-  const phoneInput = prompt("ادخل رقمك بصيغة +2010XXXXXXX"); 
-  if(!phoneInput){ alert("رقم الهاتف مطلوب"); return; }
-  const verifiedPhone = await requestPhoneVerification(phoneInput);
-  if(!verifiedPhone) return;
-  const order = { cart, phone: verifiedPhone, timestamp: Date.now() };
-  db.ref("/orders").push(order,()=>{
-    alert(`تم الطلب بنجاح!\nعدد المنتجات: ${cart.length}`);
-    cart = []; saveCart(); renderCart();
+// ======= العربة =======
+document.getElementById("cartIcon").addEventListener("click",()=>{ toggleCart(); });
+function openCart(){ document.getElementById("cartBox").style.display="block"; renderCart(); }
+function toggleCart(){ const box=document.getElementById("cartBox"); box.style.display=(box.style.display==="block")?"none":"block"; renderCart(); }
+function addToCart(idx){
+  const p=products[idx]; if(!p) return;
+  const qty=Number(document.getElementById(`qty-${idx}`).value)||1;
+  const color=document.getElementById(`color-${idx}`).value||"";
+  const existing=cart.find(c=>c.idx===idx && c.color===color);
+  if(existing) existing.qty+=qty; else cart.push({idx,qty,color});
+  renderCart();
+}
+function renderCart(){
+  const div=document.getElementById("cartItems"); div.innerHTML="";
+  let total=0;
+  cart.forEach(c=>{
+    const p=products[c.idx]; if(!p) return;
+    const final=calcFinalPrice(p);
+    total+=final*c.qty;
+    const row=document.createElement("div"); row.className="cart-row";
+    row.innerHTML=`<span>${p.name} ${c.color?`(${c.color})`:''} x${c.qty}</span><span>${final*c.qty} ج</span>`;
+    div.appendChild(row);
   });
+  document.getElementById("cartTotal").textContent=total+" ج";
+}
+function clearCart(){ cart=[]; renderCart(); }
+function checkout(){
+  if(cart.length===0){ alert("العربة فارغة"); return; }
+  const name=prompt("ادخل اسمك:")||"زائر";
+  const phone=prompt("ادخل رقم الهاتف:")||"00000000000";
+  const order={name,phone,items:cart.map(c=>({...c})),timestamp:Date.now()};
+  db.ref("/orders").push(order);
+  alert("تم إرسال الطلب!"); cart=[]; renderCart();
 }
 
-// ======= Init =======
-loadData(); loadCart(); renderAdminUI();
+// ======= أوامر الأدمن =======
+function toggleMaintenance(){ settings.maintenanceMode=!settings.maintenanceMode; db.ref("/settings/maintenanceMode").set(settings.maintenanceMode); alert("تم تغيير وضع الصيانة"); }
+function toggleOrderAccept(){ settings.acceptOrders=!settings.acceptOrders; db.ref("/settings/acceptOrders").set(settings.acceptOrders); alert("تم تشغيل/ايقاف الطلبات"); }
+function togglePrices(){ settings.hidePrices=!settings.hidePrices; renderProducts(); db.ref("/settings/hidePrices").set(settings.hidePrices); }
+function clearAllProducts(){ if(confirm("هل تريد حذف كل المنتجات؟")){ db.ref("/products").remove(); } }
+function viewOrders(){ let html=orders.map(o=>`<div>🧑 ${o.name} 📞 ${o.phone} • ${o.items.map(it=>products[it.idx]?.name+" x"+it.qty).join(", ")}</div>`).join(""); showModal("الطلبات",html||"لا توجد طلبات"); }
+
+// ======= المودال =======
+function showModal(title,content){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalBody").innerHTML=content; document.getElementById("modal").style.display="flex"; }
+function closeModal(e){ if(e) e.stopPropagation(); document.getElementById("modal").style.display="none"; }
+
+// ======= بدء التحميل =======
+renderAdminUI(); loadData();
 </script>
 
 </body>
